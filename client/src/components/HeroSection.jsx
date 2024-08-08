@@ -1,5 +1,11 @@
 const HeroSection = () => {
-  return <div></div>;
+  return (
+    <div>
+      <form className="sm:w-[60vw] h-[20vh] overflow-clip sm:rounded-3xl mx-auto flex justify-center items-center">
+        <input type="search" id="search" name="search" className="" />
+      </form>
+    </div>
+  );
 };
 
 export default HeroSection;
