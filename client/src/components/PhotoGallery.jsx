@@ -1,5 +1,4 @@
-import { FaShoppingCart } from "react-icons/fa";
-import { IoIosHeart } from "react-icons/io";
+
 
 const PhotoGallery = () => {
   return (
