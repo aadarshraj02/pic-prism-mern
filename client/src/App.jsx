@@ -4,11 +4,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import SellerDashboard from "./pages/SellerDashboard";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
