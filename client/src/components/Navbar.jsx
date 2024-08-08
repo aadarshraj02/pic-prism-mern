@@ -16,7 +16,7 @@ const Navbar = () => {
           PicPrism
         </Link>
       </div>
-      <ul className="flex items-center gap-5 text-lg font-semibold text-gray-500">
+      <ul className="flex items-center gap-5 text-lg font-semibold text-gray-500 ml-5 sm:ml-0">
         {liItems.map((item, i) => (
           <li className="hover:text-black cursor-pointer sm:p-2" key={i}>
             <Link to={item.route}>{item.name}</Link>
