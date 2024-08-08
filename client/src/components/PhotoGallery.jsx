@@ -16,8 +16,8 @@ const PhotoGallery = () => {
           </p>
           <div>
             <div>
-              <h3>Image Title</h3>
-              <p>Price: $0.99</p>
+              <h3 className="text-lg font-semibold">Image Title</h3>
+              <p className="text-gray-500">Price: $0.99</p>
             </div>
             <div></div>
           </div>
