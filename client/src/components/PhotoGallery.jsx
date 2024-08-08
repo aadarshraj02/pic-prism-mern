@@ -1,3 +1,6 @@
+import { FaShoppingCart } from "react-icons/fa";
+import { IoIosHeart } from "react-icons/io";
+
 const PhotoGallery = () => {
   return (
     <div className="my-20 bg-white flex flex-col justify-center items-center">
@@ -14,12 +17,15 @@ const PhotoGallery = () => {
           <p className="font-semibold text-white bg-black w-fit px-5 py-1 rounded-full text-sm mt-3">
             @AuthorName
           </p>
-          <div>
+          <div className="flex justify-between items-center mt-2">
             <div>
               <h3 className="text-lg font-semibold">Image Title</h3>
               <p className="text-gray-500">Price: $0.99</p>
             </div>
-            <div></div>
+            <div className="flex gap-5 justify-center items-center">
+              <FaShoppingCart className="text-2xl text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+              <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+            </div>
           </div>
         </div>
       </div>
