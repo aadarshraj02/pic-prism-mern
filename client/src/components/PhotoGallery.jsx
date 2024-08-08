@@ -5,6 +5,7 @@ const PhotoGallery = () => {
       <div>
         <div>
           <img
+            className="w-full h-full hover:scale-105 transition-all ease-linear duration-300 transform"
             src="https://plus.unsplash.com/premium_photo-1722586209835-46ae3736ec12?q=80&w=1535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="image"
           />
