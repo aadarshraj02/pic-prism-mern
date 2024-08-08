@@ -9,7 +9,7 @@ const HeroSection = () => {
           id="search"
           name="search"
           placeholder="Search your asset..."
-          className="py-5 px-3 w-[80vw] text-xl sm:text-3xl mx-auto outline-none border-b-2"
+          className="py-5 px-3 w-[80vw] text-xl sm:text-3xl mx-auto outline-none border-b-2 bg-bgColor"
         />
         <IoIosSearch className="text-3xl sm:text-5xl text-gray-500 -ml-10" />
       </form>
