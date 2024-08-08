@@ -14,6 +14,13 @@ const PhotoGallery = () => {
           <p className="font-semibold text-white bg-black w-fit px-5 py-1 rounded-full text-sm mt-3">
             @AuthorName
           </p>
+          <div>
+            <div>
+              <h3>Image Title</h3>
+              <p>Price: $0.99</p>
+            </div>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
