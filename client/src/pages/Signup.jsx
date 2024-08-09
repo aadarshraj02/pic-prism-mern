@@ -51,6 +51,18 @@ const Signup = () => {
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
+          <div className="mb-4">
+            <label
+              htmlFor="accountType"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Select Your Account Type
+            </label>
+            <select className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black">
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+            </select>
+          </div>
         </form>
       </div>
     </div>
