@@ -1,28 +1,25 @@
-import { FaShoppingCart } from "react-icons/fa";
-import { IoIosHeart } from "react-icons/io";
-
-const ImageCard = () => {
+const ImageCard = ({ id, img, title, price, author, icon1, icon2 }) => {
   return (
     <div>
       <div className="rounded-lg bg-white shadow-lg p-2">
         <div className="w-full h-[200px] overflow-hidden rounded-2xl ">
           <img
             className="w-full h-full hover:scale-105 transition-all ease-linear duration-300 transform"
-            src="https://plus.unsplash.com/premium_photo-1722586209835-46ae3736ec12?q=80&w=1535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
+            src={img}
+            alt={title}
           />
         </div>
         <p className="font-semibold text-white bg-black w-fit px-5 py-1 rounded-full text-sm mt-3">
-          @AuthorName
+          {"@" + author.charAt(0).toUpperCase() + author.slice(1)}
         </p>
         <div className="flex justify-between items-center mt-2">
           <div>
-            <h3 className="text-lg font-semibold">Image Title</h3>
-            <p className="text-gray-500">Price: $0.99</p>
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <p className="text-gray-500">Price: ${price}</p>
           </div>
           <div className="flex gap-5 justify-center items-center">
-            <FaShoppingCart className="text-2xl text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
-            <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+            {icon1}
+            {icon2}
           </div>
         </div>
       </div>
