@@ -66,7 +66,7 @@ const Signup = () => {
             </select>
           </div>
           <div className="flex items-center justify-end mb-4">
-            <Link className=" text-xs text-black ">
+            <Link className=" text-xs text-black" to="/login">
               Login With Existing Account?
             </Link>
           </div>
