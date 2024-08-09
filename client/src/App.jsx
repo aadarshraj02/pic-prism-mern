@@ -11,13 +11,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/buyer/profile" element={<BuyerDashboard />} />
-          <Route path="/seller/profile" element={<SellerDashboard />} />
-        </Routes>
+        
       </BrowserRouter>
     </>
   );
