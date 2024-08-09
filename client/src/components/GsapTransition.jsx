@@ -1,9 +1,9 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import BuyerDashboard from "./pages/BuyerDashboard";
-import SellerDashboard from "./pages/SellerDashboard";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
+import BuyerDashboard from "../pages/BuyerDashboard";
+import SellerDashboard from "../pages/SellerDashboard";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
