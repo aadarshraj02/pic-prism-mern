@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Signup = () => {
   return (
     <div className="mt-20 min-h-screen flex items-center justify-center w-full ">
@@ -62,6 +64,11 @@ const Signup = () => {
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
+          </div>
+          <div className="flex items-center justify-end mb-4">
+            <Link className=" text-xs text-black ">
+              Login With Existing Account?
+            </Link>
           </div>
         </form>
       </div>
