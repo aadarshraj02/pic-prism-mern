@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 readdirSync("./routes").map((route) => {
-  app.arguments("/api", require(`./routes/${route}`));
+  app.use("/api", require(`./routes/${route}`));
 });
 
 app.listen(port, () => {
