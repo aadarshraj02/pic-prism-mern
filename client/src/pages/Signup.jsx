@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <div className="mt-20 min-h-screen flex items-center justify-center w-full ">
+    <div className="mt-20 sm:mt-10 min-h-screen flex items-center justify-center w-full ">
       <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
         <h1 className="text-2xl font-bold text-center mb-4">
           Let&apos;s Connect
@@ -70,6 +70,9 @@ const Signup = () => {
               Login With Existing Account?
             </Link>
           </div>
+          <button className="w-full py-2 px-4 rounded-md shadow-md text-sm font-medium text-white bg-black">
+            Signup
+          </button>
         </form>
       </div>
     </div>
