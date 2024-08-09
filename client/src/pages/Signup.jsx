@@ -6,7 +6,7 @@ const Signup = () => {
           Let&apos;s Connect
         </h1>
         <form>
-          <div>
+          <div className="mb-4">
             <label
               htmlFor="username"
               className="block text-sm font-medium text-gray-700 mb-2"
@@ -18,6 +18,21 @@ const Signup = () => {
               name="name"
               id="name"
               placeholder="Enter your Username"
+              className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Email Address
+            </label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="your@email.com"
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
