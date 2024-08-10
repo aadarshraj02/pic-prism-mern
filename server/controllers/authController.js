@@ -35,6 +35,12 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    let user = await User.findOne({ email });
+    if (!user)
+      return res.status(400).json({
+        success: false,
+        message: "Not Found! Please Signup",
+      });
   } catch (error) {
     return res.status(500).json({
       success: false,
