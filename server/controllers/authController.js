@@ -31,5 +31,15 @@ const signup = async (req, res) => {
     });
   }
 };
-const login = async (req, res) => {};
+const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 module.exports = { login, signup };
