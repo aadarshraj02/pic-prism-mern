@@ -36,10 +36,17 @@ const login = async (req, res) => {
 
   try {
     let user = await User.findOne({ email });
-    if (!user)
+    if (!user) {
       return res.status(400).json({
         success: false,
-        message: "Not Found! Please Signup",
+        message: "User Not Found! Please Signup",
+      });
+    }
+    const comparePassword = await bcrypt.compare(password, user.password);
+    if (!comparePassword)
+      return res.status(400).json({
+        success: false,
+        message: "Password is incorrect",
       });
   } catch (error) {
     return res.status(500).json({
