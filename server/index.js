@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 connectDb();
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("<center><h1>Server is running</h1></center>");
