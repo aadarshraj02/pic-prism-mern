@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +11,11 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    try {
+      const res = await axios;
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   return (
