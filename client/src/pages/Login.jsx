@@ -1,13 +1,21 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="mt-20 sm:mt-10 h-[90vh] flex items-center justify-center w-full ">
       <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
         <h1 className="text-2xl font-bold text-center mb-4">
           Let&apos;s Connect
         </h1>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -20,6 +28,8 @@ const Login = () => {
               name="email"
               id="email"
               placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
@@ -35,6 +45,8 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="Enter any Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
