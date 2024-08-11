@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
+import axios from "axios";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,21 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios;
+      const res = await axios.post(import.meta.env.VITE_API_URL + "/signup", {
+        username,
+        email,
+        password,
+        accountType,
+      });
+      const data = await res.data;
+      if (data.success) {
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setAccountType("");
+        toast.success(data.message);
+        navigate("/login");
+      }
     } catch (error) {
       toast.error(error.response.data.message);
     }
