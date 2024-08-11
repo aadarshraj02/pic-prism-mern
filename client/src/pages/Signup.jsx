@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [accountType, setAccountType] = useState("");
+
   return (
     <div className="mt-20 sm:mt-10 min-h-screen flex items-center justify-center w-full ">
       <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
@@ -70,7 +76,10 @@ const Signup = () => {
               Login With Existing Account?
             </Link>
           </div>
-          <button type="submit" className="w-full py-2 px-4 rounded-md shadow-md text-sm font-medium text-white bg-black">
+          <button
+            type="submit"
+            className="w-full py-2 px-4 rounded-md shadow-md text-sm font-medium text-white bg-black"
+          >
             Signup
           </button>
         </form>
