@@ -7,13 +7,17 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("");
 
+  const handleSignup = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="mt-20 sm:mt-10 min-h-screen flex items-center justify-center w-full ">
       <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
         <h1 className="text-2xl font-bold text-center mb-4">
           Let&apos;s Connect
         </h1>
-        <form>
+        <form onSubmit={handleSignup}>
           <div className="mb-4">
             <label
               htmlFor="username"
