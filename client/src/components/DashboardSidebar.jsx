@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { AiOutlineLogout } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoIosHeart, IoMdPhotos } from "react-icons/io";
 import { SiGoogleanalytics } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
@@ -34,9 +34,12 @@ const DashboardSidebar = () => {
           <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
             <IoIosHeart /> Favorites
           </li>
-          <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
+          <Link
+            to="/"
+            className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer"
+          >
             <AiFillHome /> Home
-          </li>
+          </Link>
         </div>
       </div>
       <button className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105">
