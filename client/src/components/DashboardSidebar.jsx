@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
+import { IoMdPhotos } from "react-icons/io";
 
 const DashboardSidebar = () => {
   const author = useSelector((state) => state.auth.author);
@@ -14,11 +15,11 @@ const DashboardSidebar = () => {
         <div className="flex flex-col gap-2">
           {pathname === "/seller/profile" ? (
             <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
-              Photos Management
+              Photos Management <IoMdPhotos />
             </li>
           ) : (
             <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
-              Photos Purchased
+              Photos Purchased <IoMdPhotos />
             </li>
           )}
         </div>
