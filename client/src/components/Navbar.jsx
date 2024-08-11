@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   const liItems = [
     { name: "About", route: "/about" },
     { name: "Contact", route: "/contact" },
@@ -9,7 +11,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-5 fixed top-0 left-0 right-0 shadow-md gap-1 sm:gap-0 z-30 bg-white">
+    <nav
+      className={`flex flex-col sm:flex-row justify-between items-start sm:items-center p-5  top-0 left-0 right-0 shadow-md gap-1 sm:gap-0 z-30 bg-white ${
+        pathname === "/seller/profile" || pathname === "/buyer/profile"
+          ? "hidden"
+          : "fixed"
+      }`}
+    >
       <div className="flex justify-between items-center">
         <img src="/picprismlogo.png" alt="picprismlogo" className="w-[50px]" />
         <Link to="/" className="font-bold text-3xl">
