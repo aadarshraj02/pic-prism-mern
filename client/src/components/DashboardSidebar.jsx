@@ -6,6 +6,7 @@ import { SiGoogleanalytics } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
 import { FaList } from "react-icons/fa6";
 import { setTab } from "../../store/slices/navSlice";
+import { logout } from "../../store/slices/authSlice.js";
 
 const DashboardSidebar = () => {
   const author = useSelector((state) => state.auth.author);
@@ -78,7 +79,12 @@ const DashboardSidebar = () => {
           </Link>
         </div>
       </div>
-      <button className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105">
+      <button
+        onClick={() => {
+          dispatch(logout());
+        }}
+        className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105"
+      >
         <AiOutlineLogout /> Logout
       </button>
     </nav>
