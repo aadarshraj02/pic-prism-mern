@@ -9,4 +9,11 @@ const verifyToken = async (req, res, next) => {
       success: false,
       message: "Unauthorized",
     });
+  try {
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
