@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
-import { IoMdPhotos } from "react-icons/io";
+import { IoIosHeart, IoMdPhotos } from "react-icons/io";
+import { SiGoogleanalytics } from "react-icons/si";
+import { AiFillHome } from "react-icons/ai";
+import { FaList } from "react-icons/fa6";
 
 const DashboardSidebar = () => {
   const author = useSelector((state) => state.auth.author);
@@ -15,18 +18,29 @@ const DashboardSidebar = () => {
         <div className="flex flex-col gap-2">
           {pathname === "/seller/profile" ? (
             <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
-              Photos Management <IoMdPhotos />
+              <IoMdPhotos /> Photos Management
             </li>
           ) : (
             <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
-              Photos Purchased <IoMdPhotos />
+              <IoMdPhotos /> Photos Purchased
             </li>
           )}
+          <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
+            <SiGoogleanalytics /> Analytics
+          </li>
+          <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
+            <FaList /> Orders
+          </li>
+          <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
+            <IoIosHeart /> Favorites
+          </li>
+          <li className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer">
+            <AiFillHome /> Home
+          </li>
         </div>
       </div>
       <button className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105">
-        Logout
-        <AiOutlineLogout />
+        <AiOutlineLogout /> Logout
       </button>
     </nav>
   );
