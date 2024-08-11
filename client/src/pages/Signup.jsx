@@ -26,6 +26,8 @@ const Signup = () => {
               name="name"
               id="name"
               placeholder="Enter your Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
@@ -41,6 +43,8 @@ const Signup = () => {
               name="email"
               id="email"
               placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
@@ -56,6 +60,8 @@ const Signup = () => {
               name="password"
               id="password"
               placeholder="Enter any Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
           </div>
@@ -66,7 +72,10 @@ const Signup = () => {
             >
               Select Your Account Type
             </label>
-            <select className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black">
+            <select
+              onChange={(e) => setAccountType(e.target.value)}
+              className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
+            >
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
