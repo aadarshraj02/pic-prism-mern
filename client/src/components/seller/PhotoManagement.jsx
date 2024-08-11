@@ -1,5 +1,9 @@
 const PhotoManagement = () => {
-  return <div></div>;
+  return (
+    <div className="flex flex-col sm:flex-row">
+      <div></div>
+    </div>
+  );
 };
 
 export default PhotoManagement;
