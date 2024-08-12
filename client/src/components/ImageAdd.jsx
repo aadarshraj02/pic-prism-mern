@@ -26,6 +26,7 @@ const ImageAdd = () => {
         image,
         onUploadProgress,
       });
+      if (!public_id || !secure_url) return toast.error("Image upload Failed");
     } catch (error) {
       return toast.error(error.response.data.message);
     }
