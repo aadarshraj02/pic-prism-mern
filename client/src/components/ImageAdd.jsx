@@ -1,13 +1,17 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useUpload from "../../hooks/useUpload";
 
 const ImageAdd = () => {
   const [image, setImage] = useState(null);
-  const [progress, setpPogress] = useState(0);
+  const [progress, setProgress] = useState(0);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
   };
+
+  const onUploadProgress = (progressEvent) =>
+    setProgress(Math.round((progressEvent.loaded * 100) / progressEvent.total));
 
   const addPost = async (e) => {
     e.preventDefault();
@@ -18,6 +22,10 @@ const ImageAdd = () => {
       if (!title || !price) return toast.error("Please fill all the fields");
       if (title.trim() === "" || price.trim() === "")
         return toast.error("Please fill all the fields");
+      const { public_id, secure_url } = await useUpload({
+        image,
+        onUploadProgress,
+      });
     } catch (error) {
       return toast.error(error.response.data.message);
     }
