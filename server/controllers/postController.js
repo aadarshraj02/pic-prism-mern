@@ -60,3 +60,39 @@ const getAllPosts = async (req, res) => {
     });
   }
 };
+
+const getMyPost = async (req, res) => {
+  const authorId = req.id;
+  const authorAccountType = req.accountType;
+  try {
+    if (authorAccountType === "buyer") {
+      const { purchased } = await User.findById(authorId).populate("purchased");
+
+      if (!purchased)
+        return res.status(404).json({
+          success: false,
+          message: "No Post Found",
+        });
+      return res.status(200).json({
+        success: true,
+        data: purchased,
+      });
+    } else {
+      const { uploads } = await User.findById(authorId).populate("uploads");
+      if (!uploads)
+        return res.status(404).json({
+          success: false,
+          message: "No Post Found",
+        });
+      return res.status(200).json({
+        success: true,
+        message: "Post Found",
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
