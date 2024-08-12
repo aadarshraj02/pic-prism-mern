@@ -29,6 +29,8 @@ const useUpload = async ({ image, onUploadProgress }) => {
       return error.message;
     }
   };
+  const { public_id, secure_url } = await upload();
+  return { public_id, secure_url };
 };
 
 export default useUpload;
