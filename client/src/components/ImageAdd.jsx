@@ -53,7 +53,7 @@ const ImageAdd = () => {
         toast.success(data.message);
         e.target.reset();
         setImage(null);
-        setProgress(0)
+        setProgress(0);
       }
     } catch (error) {
       return toast.error(error.response.data.message);
@@ -73,8 +73,6 @@ const ImageAdd = () => {
           }`}
           alt="dummy image"
         />
-
-            
 
         <div className="flex flex-col">
           <label htmlFor="image" className="font-bold">
