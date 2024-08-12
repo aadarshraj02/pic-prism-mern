@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useUpload from "../../hooks/useUpload";
+import useUpload from "../hooks/useUpload";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import ProgressBar from "@ramonak/react-progress-bar";
