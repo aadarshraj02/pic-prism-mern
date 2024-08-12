@@ -8,6 +8,17 @@ const ImageAdd = () => {
           src={`https://dummyimage.com/600x400/d4d4d4/fff&text=No+Image`}
           alt="dummy image"
         />
+        <div className="flex flex-col">
+          <label htmlFor="image" className="font-bold">
+            Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            className="rounded-lg border outline-none px-3 py-1 mt-1"
+          />
+        </div>
       </form>
     </div>
   );
