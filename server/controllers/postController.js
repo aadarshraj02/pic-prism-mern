@@ -61,7 +61,7 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-const getMyPost = async (req, res) => {
+const getMyPosts = async (req, res) => {
   const authorId = req.id;
   const authorAccountType = req.accountType;
   try {
@@ -96,3 +96,5 @@ const getMyPost = async (req, res) => {
     });
   }
 };
+
+module.exports = { createPost, getAllPosts, getMyPosts };
