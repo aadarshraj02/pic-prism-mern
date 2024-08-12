@@ -1,11 +1,24 @@
+import { useState } from "react";
+
 const ImageAdd = () => {
+  const [image, setImage] = useState(null);
+  const [progress, setpPogress] = useState(0);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   return (
     <div className="p-5 mx-9 rounded-2xl shadow-md bg-white">
       <h2 className="text-xl font-bold">Add New Product</h2>
       <form className="grid grid-cols-1 gap-2 my-4">
         <img
           className="w-[350px] h-[25vh] sm:h-[30vh] rounded-lg object-cover"
-          src={`https://dummyimage.com/600x400/d4d4d4/fff&text=No+Image`}
+          src={`${
+            image
+              ? URL.createObjectURL(image)
+              : " https://dummyimage.com/600x400/d4d4d4/fff.jpg&text=No+Image"
+          }`}
           alt="dummy image"
         />
         <div className="flex flex-col">
@@ -13,6 +26,7 @@ const ImageAdd = () => {
             Image
           </label>
           <input
+            onChange={handleImageChange}
             type="file"
             name="image"
             id="image"
