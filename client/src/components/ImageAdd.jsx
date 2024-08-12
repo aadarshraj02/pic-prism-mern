@@ -39,7 +39,7 @@ const ImageAdd = () => {
           title,
           price,
           image: secure_url,
-          public_id: public_id,
+          publicId: public_id,
           author,
         },
         {
