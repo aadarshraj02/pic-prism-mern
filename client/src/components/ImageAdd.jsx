@@ -43,6 +43,12 @@ const ImageAdd = () => {
             className="rounded-lg border outline-none px-3 py-1 mt-1"
           />
         </div>
+        <button
+          type="submit"
+          className="py-1 px-3 bg-black text-white font-semibold mt-2 rounded-lg"
+        >
+          Add Product
+        </button>
       </form>
     </div>
   );
