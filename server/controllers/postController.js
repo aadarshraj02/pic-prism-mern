@@ -11,14 +11,32 @@ const createPost = async (req, res) => {
       message: "Forbidden,only sellers can post",
     });
   }
+
+  const { title, author, price, image, publicId } = req.body;
+
+  try {
+    const post = new Post({
+      title,
+      author,
+      price,
+      image,
+      publicId,
+      authorId,
+    });
+    await post.save();
+
+    await User.findByIdAndUpdate(authorId, {
+      $push: { uploads: post._id },
+    });
+    return res.status(201).json({
+      success: true,
+      message: "Post Created Successfully",
+      post,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
-const { title, author, price, image, publicId } = req.body;
-
-try {
-} catch (error) {
-  return res.status(500).json({
-    success: false,
-    message: error.message,
-  });
-}
