@@ -1,10 +1,14 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useUpload from "../../hooks/useUpload";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const ImageAdd = () => {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
+  const author = useSelector((state) => state.auth.author);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -26,7 +30,31 @@ const ImageAdd = () => {
         image,
         onUploadProgress,
       });
-      if (!public_id || !secure_url) return toast.error("Image upload Failed");
+      if (!public_id || !secure_url) return toast.error("Image Upload Failed");
+
+      const res = await axios.post(
+        import.meta.env.VITE_API_URL + "/post/create",
+        {
+          title,
+          price,
+          image: secure_url,
+          public_id: public_id,
+          author,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
+        }
+      );
+
+      const data = await res.data;
+      if (data.success == true) {
+        toast.success(data.message);
+        e.target.reset();
+        setImage(null);
+        setProgress(0)
+      }
     } catch (error) {
       return toast.error(error.response.data.message);
     }
@@ -45,6 +73,9 @@ const ImageAdd = () => {
           }`}
           alt="dummy image"
         />
+
+            
+
         <div className="flex flex-col">
           <label htmlFor="image" className="font-bold">
             Image
