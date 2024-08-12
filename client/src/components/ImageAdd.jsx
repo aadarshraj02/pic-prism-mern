@@ -16,7 +16,7 @@ const ImageAdd = () => {
       const price = e.target.price.value;
 
       if (!title || !price) return toast.error("Please fill all the fields");
-      if (title.trim() === "" || price.trim())
+      if (title.trim() === "" || price.trim() === "")
         return toast.error("Please fill all the fields");
     } catch (error) {
       return toast.error(error.response.data.message);
