@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import useUpload from "../../hooks/useUpload";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 const ImageAdd = () => {
   const [image, setImage] = useState(null);
@@ -73,7 +74,13 @@ const ImageAdd = () => {
           }`}
           alt="dummy image"
         />
-
+        {progress > 0 && (
+          <ProgressBar
+            completed={progress}
+            bgColor="black"
+            transitionTimingFunction="ease-in-out"
+          />
+        )}
         <div className="flex flex-col">
           <label htmlFor="image" className="font-bold">
             Image
