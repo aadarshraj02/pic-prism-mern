@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ImageAdd = () => {
   const [image, setImage] = useState(null);
@@ -8,10 +9,24 @@ const ImageAdd = () => {
     setImage(file);
   };
 
+  const addPost = async (e) => {
+    e.preventDefault();
+    try {
+      const title = e.target.title.value;
+      const price = e.target.price.value;
+
+      if (!title || !price) return toast.error("Please fill all the fields");
+      if (title.trim() === "" || price.trim())
+        return toast.error("Please fill all the fields");
+    } catch (error) {
+      return toast.error(error.response.data.message);
+    }
+  };
+
   return (
     <div className="p-5 mx-9 rounded-2xl shadow-md bg-white">
       <h2 className="text-xl font-bold">Add New Product</h2>
-      <form className="grid grid-cols-1 gap-2 my-4">
+      <form className="grid grid-cols-1 gap-2 my-4" onSubmit={addPost}>
         <img
           className="w-[350px] h-[25vh] sm:h-[30vh] rounded-lg object-cover"
           src={`${
@@ -43,6 +58,7 @@ const ImageAdd = () => {
             id="title"
             placeholder="Enter Image Title..."
             className="rounded-lg border outline-none px-3 py-1 mt-1"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -55,6 +71,7 @@ const ImageAdd = () => {
             id="price"
             placeholder="For e.g. $5.99 "
             className="rounded-lg border outline-none px-3 py-1 mt-1"
+            required
           />
         </div>
         <button
