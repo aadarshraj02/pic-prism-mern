@@ -19,6 +19,18 @@ const ImageAdd = () => {
             className="rounded-lg border outline-none px-3 py-1 mt-1"
           />
         </div>
+        <div className="flex flex-col">
+          <label htmlFor="title" className="font-bold">
+            Title
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Enter Image Title..."
+            className="rounded-lg border outline-none px-3 py-1 mt-1"
+          />
+        </div>
       </form>
     </div>
   );
