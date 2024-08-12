@@ -12,3 +12,13 @@ const createPost = async (req, res) => {
     });
   }
 };
+
+const { title, author, price, image, publicId } = req.body;
+
+try {
+} catch (error) {
+  return res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+}
