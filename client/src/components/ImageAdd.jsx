@@ -31,6 +31,18 @@ const ImageAdd = () => {
             className="rounded-lg border outline-none px-3 py-1 mt-1"
           />
         </div>
+        <div className="flex flex-col">
+          <label htmlFor="price" className="font-bold">
+            Price
+          </label>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            placeholder="For e.g. $5.99 "
+            className="rounded-lg border outline-none px-3 py-1 mt-1"
+          />
+        </div>
       </form>
     </div>
   );
