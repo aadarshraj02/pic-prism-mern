@@ -26,7 +26,7 @@ const PhotoManagement = () => {
         }
       );
 
-      const { data } = await res.data;
+      const data = await res.data;
       console.log(data);
       dispatch(setMyPosts(data));
     } catch (error) {
@@ -45,8 +45,6 @@ const PhotoManagement = () => {
         <DashboardHeader />
         <ImageAdd />
       </div>
-
-      {/* Section where all the images are displayed */}
       <div className="gird gird-cols-1 sm:grid-cols-3 gap-5 mt-5 bg-transparent sm:bg-white p-5 w-[90vw] sm:w-[55vw] sm:h-[95vh] sm:overflow-y-scroll rounded-lg mx-auto sm:mx-0">
         {posts.length &&
           posts?.map(({ _id, title, image, author, price }) => {
