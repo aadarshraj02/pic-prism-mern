@@ -71,4 +71,15 @@ const getMyPosts = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+  try {
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = { createPost, getAllPosts, getMyPosts };
