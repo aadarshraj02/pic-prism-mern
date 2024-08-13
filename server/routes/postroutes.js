@@ -8,6 +8,6 @@ const {
 
 router.post("/post/create", verifyToken, createPost);
 router.get("/post/getAll", getAllPosts);
-router.get("/post/myPost", verifyToken, getMyPosts);
+router.get("/post/myPosts", verifyToken, getMyPosts);
 
 module.exports = router;
