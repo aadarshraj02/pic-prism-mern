@@ -72,8 +72,9 @@ const getMyPosts = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-  const { id } = req.params;d
-  
+  const { id } = req.params;
+  d;
+
   try {
     const post = await Post.findById(id);
     if (!post)
@@ -81,6 +82,18 @@ const deletePost = async (req, res) => {
         success: false,
         message: "Post not Found",
       });
+
+    const { authorId } = post;
+    await User.findByIdAndUpdate(authorId, {
+      $pull: {
+        uploads: id,
+      },
+    });
+    // await Post.findByIdAndDelete(id)
+    return res.status(200).json({
+      success: true,
+      message: "Post deleted Successfully",
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
