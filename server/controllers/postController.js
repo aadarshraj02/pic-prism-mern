@@ -102,4 +102,33 @@ const deletePost = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getAllPosts, getMyPosts, deletePost };
+const searchPost = async (req, res) => {
+  const { search } = req.query;
+  try {
+    const posts = await Post.find({
+      title: { $regex: search, $options: "i" },
+    });
+    if (posts.length == 0)
+      return res.status(404).json({
+        success: false,
+        message: "No Post found",
+      });
+    return res.status(200).json({
+      success: true,
+      data: posts,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {
+  createPost,
+  getAllPosts,
+  getMyPosts,
+  deletePost,
+  searchPost,
+};
