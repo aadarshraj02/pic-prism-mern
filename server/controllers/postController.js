@@ -204,4 +204,5 @@ module.exports = {
   searchPost,
   addToFavorites,
   removeFromFavorites,
+  getFavorites,
 };
