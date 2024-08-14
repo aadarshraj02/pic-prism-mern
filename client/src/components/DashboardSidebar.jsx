@@ -7,11 +7,14 @@ import { AiFillHome } from "react-icons/ai";
 import { FaList } from "react-icons/fa6";
 import { setTab } from "../../store/slices/navSlice";
 import { logout } from "../../store/slices/authSlice.js";
+import { GoArrowSwitch } from "react-icons/go";
 
 const DashboardSidebar = () => {
   const author = useSelector((state) => state.auth.author);
   const sidebar = useSelector((state) => state.nav.sidebar);
   const tab = useSelector((state) => state.nav.tab);
+
+  const switchProfile = () => {};
 
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ const DashboardSidebar = () => {
     >
       <div>
         <div className="bg-black my-5 w-fit rounded-full px-6 py-4 text-white">
-          {author.charAt(0).toUpperCase()}
+          {author?.charAt(0).toUpperCase()}
         </div>
         <div className="flex flex-col gap-2">
           {pathname === "/seller/profile" ? (
@@ -77,6 +80,13 @@ const DashboardSidebar = () => {
           >
             <AiFillHome /> Home
           </Link>
+          <button
+            onClick={switchProfile}
+            className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer"
+          >
+            <GoArrowSwitch />
+            Switch to {pathname == "/seller/profile" ? "buyer" : "seller"}
+          </button>
         </div>
       </div>
       <button
