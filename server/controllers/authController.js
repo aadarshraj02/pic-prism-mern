@@ -74,4 +74,48 @@ const login = async (req, res) => {
     });
   }
 };
-module.exports = { login, signup };
+
+const refresh = async (req, res) => {
+  const authHeader = req.headers["Authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token)
+    return res.status(401).json({
+      success: false,
+      message: "Please Login",
+    });
+
+  try {
+    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err)
+        return res.status(403).json({
+          success: false,
+          message: err.message,
+        });
+      const accessToken = generateAccessToken({
+        id: user.id,
+        accountType: user.accountType,
+        author: user.author,
+      });
+      const refreshToken = generateRefreshToken({
+        id: user.id,
+        accountType: user.accountType,
+        author: user.author,
+      });
+      return res.status(200).json({
+        success: true,
+        message: "Token Refreshed successfully",
+        accessToken,
+        refreshToken,
+        role: user.accountType,
+        author: user.author,
+      });
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+module.exports = { login, signup, refresh };
