@@ -6,6 +6,8 @@ const {
   getMyPosts,
   deletePost,
   searchPost,
+  addToFavorites,
+  removeFromFavorites,
 } = require("../controllers/postController");
 
 router.post("/post/create", verifyToken, createPost);
@@ -13,5 +15,7 @@ router.get("/post/getAll", getAllPosts);
 router.get("/post/myPosts", verifyToken, getMyPosts);
 router.delete("/post/delete/:id", verifyToken, deletePost);
 router.get("/posts/search", searchPost);
+router.put("/post/addToFavorites/:postId", verifyToken, addToFavorites);
+router.put("/post/removeFromFavorites/:postId", verifyToken, removeFromFavorites);
 
 module.exports = router;
