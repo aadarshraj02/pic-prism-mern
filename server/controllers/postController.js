@@ -181,4 +181,6 @@ module.exports = {
   getMyPosts,
   deletePost,
   searchPost,
+  addToFavorites,
+  removeFromFavorites,
 };
