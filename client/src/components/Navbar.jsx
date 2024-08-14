@@ -1,10 +1,38 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { login, logout } from "../../store/slices/authSlice";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const role = useSelector((state) => state.auth.role);
+  const dispatch = useDispatch();
+
+  const refreshToken = async () => {
+    try {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/refresh", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("refreshToken"),
+        },
+      });
+      const data = await res.data;
+      dispatch(login(data));
+    } catch (error) {
+      dispatch(logout());
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshToken();
+    }, 1000 * 60 * 13);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const liItems = [
     { name: "About", route: "/about" },
