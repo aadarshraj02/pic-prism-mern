@@ -175,6 +175,27 @@ const removeFromFavorites = async (req, res) => {
   }
 };
 
+const getFavorites = async (req, res) => {
+  const { authorId } = req.id;
+  try {
+    const { favorites } = await User.findById(authorId).populate("favorites");
+    if (!favorites)
+      return res.status(404).json({
+        success: false,
+        message: "No Favorites Added",
+      });
+    return res.status(200).json({
+      success: true,
+      data: favorites,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createPost,
   getAllPosts,
