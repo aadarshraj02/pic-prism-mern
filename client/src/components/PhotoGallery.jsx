@@ -28,6 +28,7 @@ const PhotoGallery = () => {
     if (!isAuthenticated) {
       toast.error("Please Login to purchase asset");
       navigate("/login");
+      return;
     }
     try {
       const res = await axios.post(
