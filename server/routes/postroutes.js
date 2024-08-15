@@ -24,6 +24,6 @@ router.put(
   removeFromFavorites
 );
 router.get("/post/favorites", verifyToken, getFavorites);
-router.get("/post/getPostsByDateRange", verifyToken, getPostsByRange);
+router.get("/post/getPostsByDateRange", verifyToken, getPostsByDateRange);
 
 module.exports = router;

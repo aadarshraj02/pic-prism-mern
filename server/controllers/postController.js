@@ -196,7 +196,7 @@ const getFavorites = async (req, res) => {
   }
 };
 
-const getPostsByRange = async (req, res) => {
+const getPostsByDateRange = async (req, res) => {
   const authorId = req.id;
   const authorAccountType = req.accountType;
   let data;
@@ -252,5 +252,5 @@ module.exports = {
   addToFavorites,
   removeFromFavorites,
   getFavorites,
-  getPostsByRange,
+  getPostsByDateRange,
 };
