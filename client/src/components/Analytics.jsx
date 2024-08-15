@@ -1,5 +1,11 @@
+import DashboardHeader from "../components/DashboardHeader";
+
 const Analytics = () => {
-  return <div></div>;
+  return (
+    <div>
+      <DashboardHeader />
+    </div>
+  );
 };
 
 export default Analytics;
