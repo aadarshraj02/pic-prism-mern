@@ -10,7 +10,7 @@ import {
 const ExpenseCard = () => {
   return (
     <div>
-      <div className="w-[83vw] sm:w-[80vw] ml-8 p-2 bg-white rounded-2xl shadow-md flex flex-col justify-between items-center gap-5">
+      <div className="w-[83vw] sm:w-[25vw] ml-8 p-2 bg-white rounded-2xl shadow-md flex flex-col justify-between items-center gap-5">
         <ResponsiveContainer width="100%" height={150}>
           <LineChart
             margin={{
