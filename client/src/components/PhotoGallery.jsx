@@ -42,6 +42,7 @@ const PhotoGallery = () => {
         }
       );
       const { data } = await res.data;
+      handlePaymentVerify(data, price, id, postUrl, author, title);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -92,7 +93,8 @@ const PhotoGallery = () => {
         }
       },
     };
-    const razorpayWindow = new Window.
+    const razorpayWindow = new Window.Razorpay(options);
+    razorpayWindow.open();
   };
 
   useEffect(() => {
@@ -112,7 +114,11 @@ const PhotoGallery = () => {
             img={image}
             price={price}
             icon1={
-              <FaShoppingCart className="text-2xl text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+              <FaShoppingCart
+                title="Cart"
+                onClick={() => purchaseImage(price, _id, image, author, title)}
+                className="text-2xl text-black cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
+              />
             }
             icon2={
               <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
