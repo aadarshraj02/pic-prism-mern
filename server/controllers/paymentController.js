@@ -102,3 +102,5 @@ const verifyOrder = async (req, res) => {
     });
   }
 };
+
+module.exports = { generateOrder, verifyOrder };
