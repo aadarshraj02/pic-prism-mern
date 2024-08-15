@@ -8,6 +8,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import ExpenseCard from "./ExpenseCard";
 
 const Analytics = () => {
   const { pathname } = useLocation();
@@ -40,6 +41,10 @@ const Analytics = () => {
             />
           </LineChart>
         </ResponsiveContainer>
+        <p>Total Earned :</p>
+      </div>
+      <div className="flex flex-col sm:flex-row justify-between gap-2 mb-10">
+        <ExpenseCard />
       </div>
     </div>
   );
