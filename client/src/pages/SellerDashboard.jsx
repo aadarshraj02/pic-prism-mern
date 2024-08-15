@@ -1,13 +1,13 @@
-import Analytics from "../components/Analytics";
+// import Analytics from "../components/Analytics";
 import DashboardSidebar from "../components/DashboardSidebar";
-// import PhotoManagement from "../components/seller/PhotoManagement";
+import PhotoManagement from "../components/seller/PhotoManagement";
 
 const SellerDashboard = () => {
   return (
     <div className="flex flex-col sm:flex-row">
       <DashboardSidebar />
-      {/* <PhotoManagement /> */}
-      <Analytics />
+      <PhotoManagement />
+      {/* <Analytics /> */}
     </div>
   );
 };
