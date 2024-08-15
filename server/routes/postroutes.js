@@ -9,7 +9,7 @@ const {
   addToFavorites,
   removeFromFavorites,
   getFavorites,
-  getPostsByRange,
+  getPostsByDateRange,
 } = require("../controllers/postController");
 
 router.post("/post/create", verifyToken, createPost);
