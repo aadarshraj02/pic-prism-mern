@@ -93,7 +93,7 @@ const PhotoGallery = () => {
         }
       },
     };
-    const razorpayWindow = new Window.Razorpay(options);
+    const razorpayWindow = new Razorpay(options);
     razorpayWindow.open();
   };
 
