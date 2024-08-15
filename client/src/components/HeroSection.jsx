@@ -1,10 +1,29 @@
 import { IoIosSearch } from "react-icons/io";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAllPosts } from "../../store/slices/postSlice";
 
 const HeroSection = () => {
+  const dispatch = useDispatch();
+
+  const handleSearch = async (e) => {
+    try {
+      const search = e.target.value;
+      const res = await axios.get(
+        import.meta.env.VITE_API_URL + `/post/search?search=${search}`
+      );
+      const { data } = await res.data;
+      dispatch(setAllPosts(data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="sm:w-[60vw] h-[20vh] overflow-clip sm:rounded-3xl mx-auto flex justify-center items-center">
       <form className="absolute flex justify-center items-center">
         <input
+          onChange={handleSearch}
           type="search"
           id="search"
           name="search"
