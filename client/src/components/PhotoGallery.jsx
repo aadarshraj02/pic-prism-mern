@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setAllPosts } from "../../store/slices/postSlice";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const PhotoGallery = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,30 @@ const PhotoGallery = () => {
     const { data } = await res.data;
     console.log(data);
     dispatch(setAllPosts(data));
+  };
+
+  const purchaseImage = async (price, id, postUrl, author, title) => {
+    if (!isAuthenticated) {
+      toast.error("Please Login to purchase asset");
+      navigate("/login");
+    }
+    try {
+      const res = await axios.post(
+        import.meta.env.VITE_API_URL + "/payment/generate",
+        {
+          price,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      const { data } = await res.data;
+      
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   useEffect(() => {
