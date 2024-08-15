@@ -40,10 +40,11 @@ const PhotoGallery = () => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
+          withCredentials: true,
         }
       );
       const { data } = await res.data;
-      handlePaymentVerify(data, price, id, postUrl, author, title);
+     await handlePaymentVerify(data, price, id, postUrl, author, title);
     } catch (error) {
       toast.error(error.response.data.message);
     }
