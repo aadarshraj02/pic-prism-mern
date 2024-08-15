@@ -42,10 +42,57 @@ const PhotoGallery = () => {
         }
       );
       const { data } = await res.data;
-      
     } catch (error) {
       toast.error(error.response.data.message);
     }
+  };
+
+  const handlePaymentVerify = async (
+    data,
+    id,
+    postUrl,
+    author,
+    title,
+    price
+  ) => {
+    const options = {
+      key: import.meta.env.RAZORPAY_KEY_ID,
+      amount: data.amount,
+      currency: data.currency,
+      name: "Adarsh Raj",
+      order_id: data.id,
+      theme: {
+        color: "#5f63b8",
+      },
+      handler: async (response) => {
+        try {
+          const res = await axios.post(
+            import.meta.env.VITE_API_URL + "/payment/verify",
+            {
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+              postId: id,
+              postUrl,
+              author,
+              title,
+              price,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              withCredentials: true,
+            }
+          );
+          const data = await res.data;
+          toast.success(data.message);
+        } catch (error) {
+          toast.error(error.response.data.message);
+        }
+      },
+    };
+    const razorpayWindow = new Window.
   };
 
   useEffect(() => {
