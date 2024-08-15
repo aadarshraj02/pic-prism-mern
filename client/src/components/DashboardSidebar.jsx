@@ -1,20 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLogout } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosHeart, IoMdPhotos } from "react-icons/io";
 import { SiGoogleanalytics } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
 import { FaList } from "react-icons/fa6";
 import { setTab } from "../../store/slices/navSlice";
-import { logout } from "../../store/slices/authSlice.js";
+import { logout, login } from "../../store/slices/authSlice.js";
 import { GoArrowSwitch } from "react-icons/go";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const DashboardSidebar = () => {
   const author = useSelector((state) => state.auth.author);
   const sidebar = useSelector((state) => state.nav.sidebar);
   const tab = useSelector((state) => state.nav.tab);
+  const navigate = useNavigate();
 
-  const switchProfile = () => {};
+  const switchProfile = async () => {
+    const res = await axios.get(import.meta.env.VITE_API_URL + "/switch", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
+    const data = await res.data;
+    toast.success(data.message);
+    dispatch(login(data));
+    navigate(`/${data.role}/profile`);
+  };
 
   const { pathname } = useLocation();
   const dispatch = useDispatch();
