@@ -111,7 +111,7 @@ const ImageAdd = () => {
             Price
           </label>
           <input
-            type="text"
+            type="number"
             name="price"
             id="price"
             placeholder="For e.g. $5.99 "
