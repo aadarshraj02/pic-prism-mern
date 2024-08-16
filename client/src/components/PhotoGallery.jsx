@@ -26,10 +26,11 @@ const PhotoGallery = () => {
 
   const purchaseImage = async (price, id, postUrl, author, title) => {
     if (!isAuthenticated) {
-      toast.error("Please Login to purchase asset");
+      toast.error("Please login to purchase asset");
       navigate("/login");
       return;
     }
+
     try {
       const res = await axios.post(
         import.meta.env.VITE_API_URL + "/payment/generate",
@@ -44,7 +45,7 @@ const PhotoGallery = () => {
         }
       );
       const { data } = await res.data;
-     await handlePaymentVerify(data, price, id, postUrl, author, title);
+      await handlePaymentVerify(data, id, postUrl, author, title, price);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -95,7 +96,7 @@ const PhotoGallery = () => {
         }
       },
     };
-    const razorpayWindow = new Razorpay(options);
+    const razorpayWindow = new window.Razorpay(options);
     razorpayWindow.open();
   };
 
