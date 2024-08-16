@@ -1,8 +1,8 @@
 const Razorpay = require("razorpay");
 const User = require("../model/User");
-const crypto = require("crypto");
 const Order = require("../model/Order");
 const Post = require("../model/Post");
+const crypto = require("crypto");
 
 const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -16,32 +16,23 @@ const generateOrder = async (req, res) => {
   try {
     let user = await User.findById(purchaserId);
     if (!user)
-      return res.status(404).json({
-        success: false,
-        message: "User not found",
-      });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     const options = {
       amount: Number(price * 100),
       currency: "USD",
       receipt: crypto.randomBytes(10).toString("hex"),
     };
+
     razorpayInstance.orders.create(options, (error, order) => {
       if (error) {
-        return res.status(500).json({
-          success: false,
-          message: error.message,
-        });
+        return res.status(500).json({ success: false, message: error.message });
       }
-      return res.status(200).json({
-        success: true,
-        data: order,
-      });
+      return res.status(200).json({ success: true, data: order });
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -55,16 +46,17 @@ const verifyOrder = async (req, res) => {
     author,
     title,
     price,
+    postId,
   } = req.body;
 
   try {
     const sign = razorpay_order_id + "|" + razorpay_payment_id;
-    const expectedSign = crypto.createHmac(
-      "sha256",
-      process.env.RAZORPAY_SECRET
-    );
-    const isAuthentic = expectedSign === razorpay_signature;
+    const expectedSign = crypto
+      .createHmac("sha256", process.env.RAZORPAY_SECRET)
+      .update(sign.toString())
+      .digest("hex");
 
+    const isAuthentic = expectedSign === razorpay_signature;
     if (isAuthentic) {
       const order = new Order({
         purchaserId,
@@ -75,31 +67,23 @@ const verifyOrder = async (req, res) => {
         author,
         title,
         price,
-        postId,
       });
-
       await order.save();
 
       let userData = await User.findByIdAndUpdate(purchaserId, {
-        $push: {
-          purchased: order._id,
-        },
+        $push: { purchased: order._id },
       });
+
       let postData = await Post.findByIdAndUpdate(postId, {
-        $push: {
-          purchasedBy: purchaserId,
-        },
+        $push: { purchasedBy: purchaserId },
       });
-      return res.status(200).json({
-        success: true,
-        message: "Payment Successful",
-      });
+
+      return res
+        .status(200)
+        .json({ success: true, message: "Payment successful" });
     }
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
