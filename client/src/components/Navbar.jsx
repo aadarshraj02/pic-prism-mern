@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login, logout } from "../../store/slices/authSlice";
 import axios from "axios";
 import { useEffect } from "react";
@@ -9,6 +9,7 @@ const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const refreshToken = async () => {
     try {
@@ -19,9 +20,14 @@ const Navbar = () => {
       });
       const data = await res.data;
       dispatch(login(data));
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
     } catch (error) {
       dispatch(logout());
-      console.log(error);
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      navigate("/login");
+      console.error("Failed to refresh token: ", error);
     }
   };
 
@@ -29,6 +35,7 @@ const Navbar = () => {
     const interval = setInterval(() => {
       refreshToken();
     }, 1000 * 60 * 13);
+
     return () => {
       clearInterval(interval);
     };
