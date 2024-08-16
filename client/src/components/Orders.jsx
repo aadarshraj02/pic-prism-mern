@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrders } from "../../store/slices/orderSlice";
+import DashboardHeader from "./DashboardHeader";
 
 const Orders = () => {
   const dispatch = useDispatch(); // Hook used inside the functional component
@@ -30,7 +31,13 @@ const Orders = () => {
     getOrders();
   }, []);
 
-  return <div>{/* Render your orders or other content here */}</div>;
+  return (
+    <div>
+      <DashboardHeader />
+      <h1 className="text-2xl font-semibold mb-5 ml-8 ">Orders</h1>
+      <div className="overflow-x-auto sm:ml-8 "></div>
+    </div>
+  );
 };
 
 export default Orders;
