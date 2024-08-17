@@ -1,5 +1,3 @@
-import Testimonial from "../../src/components/Testimonial";
-
 const About = () => {
   return (
     <div className="mt-32 px-8">
@@ -57,7 +55,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Testimonial />
     </div>
   );
 };
