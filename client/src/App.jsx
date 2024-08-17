@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import GsapTransition from "./components/GsapTransition";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <BrowserRouter>
           <Navbar />
           <GsapTransition />
+          <Footer />
         </BrowserRouter>
       </Provider>
     </>
