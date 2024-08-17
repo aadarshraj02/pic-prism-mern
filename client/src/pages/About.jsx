@@ -5,7 +5,7 @@ const About = () => {
       <div className="flex flex-col md:flex-row gap-10 w-full">
         <div className="w-full sm:w-1/2">
           <img
-            className="w-full object-cover"
+            className="w-full object-cover rounded-2xl"
             src="/image.jpg"
             alt="collage image"
           />
@@ -33,7 +33,7 @@ const About = () => {
                 title and set your price. You will also get details like order
                 details and analytics graph for this week month and this year.
               </p>
-              <p className="mt-2 text-sm">
+              <p className="mt-2 text-sm mb-4">
                 <span className="text-gray-700 text-xl font-semibold">
                   As a Buyer:
                 </span>{" "}
@@ -47,7 +47,7 @@ const About = () => {
             </div>
             <div className="w-1/2">
               <img
-                className="w-full object-cover hidden md:block"
+                className="w-full object-cover hidden md:block rounded-xl"
                 src="/image2.webp"
                 alt=""
               />
