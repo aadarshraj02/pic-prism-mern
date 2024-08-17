@@ -24,6 +24,7 @@ const PhotosPurchased = () => {
         }
       );
       const { data } = await res.data;
+      dispatch(setMyPosts(data));
     } catch (error) {
       toast.error("Failed to fetch Photos", error);
       dispatch(logout());
