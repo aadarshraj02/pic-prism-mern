@@ -9,9 +9,35 @@ import {
   Tooltip,
 } from "recharts";
 import ExpenseCard from "./ExpenseCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Analytics = () => {
   const { pathname } = useLocation();
+  const [tillNow, setTillNow] = useState([]);
+  const [thisYear, setThisYear] = useState([]);
+  const [thisMonth, setThisMonth] = useState([]);
+  const [thisWeek, setThisWeek] = useState([]);
+
+  const getPostsByDateRange = async () => {
+    const res = await axios.get(
+      import.meta.env.VITE_API_URL + "/post/getPostByDateRange",
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        withCredentials: true,
+      }
+    );
+    const { data } = await res.data;
+    setTillNow(data.tillNow);
+    setThisYear(data.thisYear);
+    setThisMonth(data.thisMonth);
+    setThisWeek(data.thisWeek);
+  };
+  useEffect(() => {
+    getPostsByDateRange();
+  }, []);
 
   return (
     <div>
@@ -28,7 +54,6 @@ const Analytics = () => {
               bottom: -50,
               left: -61,
             }}
-            data={data}
           >
             <XAxis dataKey="title" hide />
             <YAxis />
