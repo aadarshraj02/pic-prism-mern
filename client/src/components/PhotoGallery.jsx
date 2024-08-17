@@ -100,6 +100,29 @@ const PhotoGallery = () => {
     razorpayWindow.open();
   };
 
+  const addToFavorites = async (postId) => {
+    if (!isAuthenticated) {
+      toast.error("Please login to add to favorites");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/post/addToFavorites/${postId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      toast.success("Added to Favorites");
+    } catch (error) {
+      toast.error("Failed to add to Favorites");
+    }
+  };
+
   useEffect(() => {
     getAllImages();
   }, []);
@@ -124,7 +147,11 @@ const PhotoGallery = () => {
               />
             }
             icon2={
-              <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+              <IoIosHeart
+                title="Add to Favorites"
+                onClick={() => addToFavorites(_id)}
+                className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
+              />
             }
           />
         ))}
