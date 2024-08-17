@@ -210,36 +210,36 @@ const getPostsByDateRange = async (req, res) => {
       data = uploads;
     }
     if (!data)
-      return res.status(500).json({
-        success: false,
-        message: "No Post found",
-      });
-    const now = newDate();
+      return res
+        .status(500)
+        .json({ success: false, message: "No posts found" });
+
+    const now = new Date();
     const startOfYear = new Date(now.getFullYear(), 0, 1);
-    const startOfMonth = newDate(now.getFullYear(), now.getMonth(), 1);
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()));
 
     const postsThisYear = data.filter(
-      (post) => newDate(post.createdAt) >= startOfYear
+      (post) => new Date(post.createdAt) >= startOfYear
     );
     const postsThisMonth = data.filter(
       (post) => new Date(post.createdAt) >= startOfMonth
     );
     const postsThisWeek = data.filter(
-      (post) => newDate(post.createdAt) >= startOfWeek
+      (post) => new Date(post.createdAt) >= startOfWeek
     );
-    res.status(200).json({
+
+    return res.status(200).json({
       success: true,
-      tillNow: data,
-      thisYear: postsThisYear,
-      thisMonth: postsThisMonth,
-      thisWeek: postsThisWeek,
+      data: {
+        tillNow: data,
+        thisYear: postsThisYear,
+        thisMonth: postsThisMonth,
+        thisWeek: postsThisWeek,
+      },
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
