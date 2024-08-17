@@ -39,6 +39,18 @@ const Analytics = () => {
     getPostsByDateRange();
   }, []);
 
+  const calculateTotalForSeller = (data) => {
+    const value = data.reduce((acc, current) => {
+      const price = current.price || 0;
+      const purchases = current.purchasedBy ? current.purchasedBy.length : 0;
+      return acc + price * purchases;
+    }, 0);
+    return value;
+  };
+
+  const calculateTotalForBuyer = (data) =>
+    data.reduce((acc, current) => acc + current.price, 0);
+
   return (
     <div>
       <DashboardHeader />
@@ -54,8 +66,9 @@ const Analytics = () => {
               bottom: -50,
               left: -61,
             }}
+            data={thisYear}
           >
-            <XAxis dataKey="title" hide />
+            <XAxis dataKey="price" hide />
             <YAxis />
             <Tooltip />
             <Line
@@ -66,7 +79,12 @@ const Analytics = () => {
             />
           </LineChart>
         </ResponsiveContainer>
-        <p>Total Earned :</p>
+        <p>
+          Total {pathname == "seller/profile" ? "Earned" : "Spent"} : ${" "}
+          {pathname == "/seller/profile"
+            ? calculateTotalForSeller(thisYear)
+            : calculateTotalForBuyer(thisYear)}
+        </p>
       </div>
       <div className="flex flex-col sm:flex-row justify-between gap-2 mb-10">
         <ExpenseCard />
