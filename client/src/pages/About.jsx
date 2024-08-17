@@ -1,3 +1,5 @@
+import Testimonial from "../../src/components/Testimonial";
+
 const About = () => {
   return (
     <div className="mt-32 px-8">
@@ -41,7 +43,8 @@ const About = () => {
                 After signing up as a Buyer on your dashboard you can purchase
                 any assets and then it will be displayed in your profile. You
                 can also check your analytics like how much you spend this week,
-                month and this Year and you will also get your all order details.
+                month and this Year and you will also get your all order
+                details.
               </p>
             </div>
             <div className="w-1/2">
@@ -54,6 +57,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Testimonial />
     </div>
   );
 };
