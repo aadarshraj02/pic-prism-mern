@@ -1,8 +1,8 @@
 import DashboardSidebar from "../components/DashboardSidebar";
-import PhotoManagement from "../components/seller/PhotoManagement";
 import Analytics from "../components/Analytics";
 import Orders from "../components/Orders";
 import { useSelector } from "react-redux";
+import PhotosPurchased from "../components/buyer/PhotosPurchased";
 
 const BuyerDashboard = () => {
   const tab = useSelector((state) => state.nav.tab);
@@ -12,14 +12,14 @@ const BuyerDashboard = () => {
       <div>
         {(() => {
           switch (tab) {
-            case "photos-management":
-              return <PhotoManagement />;
+            case "photos-purchased":
+              return <PhotosPurchased />;
             case "analytics":
               return <Analytics />;
             case "orders":
               return <Orders />;
             default:
-              return <PhotoManagement />;
+              return <PhotosPurchased />;
           }
         })()}
       </div>
