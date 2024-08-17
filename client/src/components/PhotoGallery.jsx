@@ -101,12 +101,6 @@ const PhotoGallery = () => {
   };
 
   const addToFavorites = async (postId) => {
-    if (!isAuthenticated) {
-      toast.error("Please login to add to favorites");
-      navigate("/login");
-      return;
-    }
-
     try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/post/addToFavorites/${postId}`,
@@ -119,7 +113,7 @@ const PhotoGallery = () => {
       );
       toast.success("Added to Favorites");
     } catch (error) {
-      toast.error("Failed to add to Favorites");
+      toast.error("Failed to add to Favorites", error);
     }
   };
 
