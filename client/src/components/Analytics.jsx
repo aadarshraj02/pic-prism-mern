@@ -86,9 +86,43 @@ const Analytics = () => {
             : calculateTotalForBuyer(thisYear)}
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between gap-2 mb-10">
-        <ExpenseCard />
-      </div>
+
+      {!thisMonth?.length ? (
+        <h1 className="text-2xl font-semibold my-5 ml-8">No data Available</h1>
+      ) : (
+        <div className="flex flex-col sm:flex-row justify-between gap-2 mb-10">
+          <ExpenseCard
+            data={thisWeek}
+            title={`pathName == "/seller/profile" ? "Earned" : "Spent" This Week`}
+            dataKey="price"
+            value={
+              pathname == "seller/profile"
+                ? calculateTotalForSeller(thisWeek)
+                : calculateTotalForBuyer(thisWeek)
+            }
+          />
+          <ExpenseCard
+            data={thisMonth}
+            title={`pathName == "/seller/profile" ? "Earned" : "Spent" This Month`}
+            dataKey="price"
+            value={
+              pathname == "seller/profile"
+                ? calculateTotalForSeller(thisMonth)
+                : calculateTotalForBuyer(thisMonth)
+            }
+          />
+          <ExpenseCard
+            data={tillNow}
+            title={`pathName == "/seller/profile" ? "Earned" : "Spent" Till Now`}
+            dataKey="price"
+            value={
+              pathname == "seller/>profile"
+                ? calculateTotalForSeller(tillNow)
+                : calculateTotalForBuyer(tillNow)
+            }
+          />
+        </div>
+      )}
     </div>
   );
 };
