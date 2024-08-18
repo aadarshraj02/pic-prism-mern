@@ -57,7 +57,7 @@ const PhotosPurchased = () => {
   return (
     <div>
       <DashboardHeader />
-      <div className="mx-8 grid md:grid-cos-3 lg:grid-cols-4 gap-4">
+      <div className="mx-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cos-3 lg:grid-cols-4 gap-4">
         {posts?.map(({ _id, title, postUrl, author, price }) => (
           <ImageCard
             key={_id}
