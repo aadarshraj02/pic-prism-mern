@@ -43,12 +43,15 @@ const Signup = () => {
     }
 
     try {
-      const res = await axios.post(import.meta.env.VITE_API_URL + "/signup", {
-        username,
-        email,
-        password,
-        accountType,
-      });
+      const res = await axios.post(
+        import.meta.env.VITE_API_URL + "/api/signup",
+        {
+          username,
+          email,
+          password,
+          accountType,
+        }
+      );
       const data = await res.data;
       if (data.success) {
         setUsername("");
