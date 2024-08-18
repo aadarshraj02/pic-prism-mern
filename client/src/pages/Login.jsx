@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <div className="mt-20 sm:mt-10 h-[90vh] flex items-center justify-center w-full ">
-      <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
+      <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[50vw] lg:w-[40vw] xl:w-[30vw]">
         <h1 className="text-2xl font-bold text-center mb-4">
           Let&apos;s Connect
         </h1>

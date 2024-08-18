@@ -31,7 +31,7 @@ const Contact = () => {
 
   return (
     <div className="mt-20 sm:mt-10 h-[100vh] flex items-center justify-center w-full">
-      <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[27vw]">
+      <div className="bg-white shadow-md rounded-3xl px-5 py-6 w-full sm:w-[50vw] lg:w-[40vw] xl:w-[30vw]">
         <h1 className="text-2xl font-bold text-center mb-4">Contact Us</h1>
         <p className="text-sm text-center mb-4 text-gray-500">
           Ask us anything and get reply back within 24h
