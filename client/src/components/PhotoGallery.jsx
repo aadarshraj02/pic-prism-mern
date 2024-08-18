@@ -18,7 +18,7 @@ const PhotoGallery = () => {
   const getAllImages = async () => {
     if (posts.length > 0) return;
 
-    const res = await axios.get(import.meta.env.VITE_API_URL + "/post/getAll");
+    const res = await axios.get(import.meta.env.VITE_API_URL + "/api/post/getAll");
     const { data } = await res.data;
     dispatch(setAllPosts(data));
   };
@@ -32,7 +32,7 @@ const PhotoGallery = () => {
 
     try {
       const res = await axios.post(
-        import.meta.env.VITE_API_URL + "/payment/generate",
+        import.meta.env.VITE_API_URL + "/api/payment/generate",
         { price },
         {
           headers: {
@@ -68,7 +68,7 @@ const PhotoGallery = () => {
       handler: async (response) => {
         try {
           const res = await axios.post(
-            import.meta.env.VITE_API_URL + "/payment/verify",
+            import.meta.env.VITE_API_URL + "/api/payment/verify",
             {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,

@@ -18,7 +18,7 @@ const DashboardSidebar = () => {
   const navigate = useNavigate();
 
   const switchProfile = async () => {
-    const res = await axios.get(import.meta.env.VITE_API_URL + "/switch", {
+    const res = await axios.get(import.meta.env.VITE_API_URL + "/api/switch", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

@@ -22,7 +22,7 @@ const Analytics = () => {
 
   const getPostsByDateRange = async () => {
     const res = await axios.get(
-      import.meta.env.VITE_API_URL + "/post/getPostsByDateRange",
+      import.meta.env.VITE_API_URL + "/api/post/getPostsByDateRange",
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
