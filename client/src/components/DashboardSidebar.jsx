@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLogout } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoIosHeart, IoMdPhotos } from "react-icons/io";
+import { IoMdPhotos } from "react-icons/io";
 import { SiGoogleanalytics } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
 import { FaList } from "react-icons/fa6";
