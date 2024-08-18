@@ -62,8 +62,8 @@ const Analytics = () => {
         {pathname == "/seller/profile" ? "Uploaded" : "Purchased"} This Year
       </h2>
 
-      <div className="w-[83vw] sm:w-[80vw] ml-8 p-2 bg-white rounded-2xl shadow-md flex flex-col justify-between items-center gap-5">
-        <ResponsiveContainer width="100%" height={150}>
+      <div className="w-[80vw] lg:w-[70vw] ml-8 p-2 bg-white rounded-2xl shadow-md flex flex-col justify-between items-center gap-5">
+        <ResponsiveContainer width="95%" height={150}>
           <LineChart
             margin={{
               top: 20,
@@ -92,12 +92,10 @@ const Analytics = () => {
         </p>
       </div>
 
-      {/* My three expense card will be here */}
-
       {!thisMonth?.length ? (
         <h1 className="text-2xl font-semibold my-5 ml-8">No data available</h1>
       ) : (
-        <div className="flex flex-col sm:flex-row justify-between gap-2 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mb-10">
           <ExpenseCard
             data={thisWeek}
             title={`${
@@ -114,7 +112,7 @@ const Analytics = () => {
             data={thisMonth}
             title={`${
               pathname == "/seller/profile" ? "Earned" : "Spent"
-            } This Months`}
+            } This Month`}
             dataKey="price"
             value={
               pathname == "/seller/profile"
