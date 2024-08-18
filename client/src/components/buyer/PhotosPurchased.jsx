@@ -50,7 +50,7 @@ const PhotosPurchased = () => {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.log("Error downloading image ", error);
+      toast.error("Error downloading image", error);
     }
   };
 

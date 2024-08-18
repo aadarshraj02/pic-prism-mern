@@ -27,7 +27,6 @@ const PhotoManagement = () => {
       );
 
       const { data } = await res.data;
-      console.log(data);
       dispatch(setMyPosts(data));
     } catch (error) {
       toast.error(error.response.data.message);

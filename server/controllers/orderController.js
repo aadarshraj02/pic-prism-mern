@@ -12,7 +12,6 @@ const getOrders = async (req, res) => {
     } else {
       orderData = await Order.find({ author });
       const { username } = await User.findById(orderData[0].purchaserId);
-      console.log("username", username);
       orders = orderData.map((order) => {
         return {
           author: order.author,

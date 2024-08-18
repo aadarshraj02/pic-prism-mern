@@ -49,7 +49,6 @@ const getMyPosts = async (req, res) => {
   try {
     if (authorAccountType === "buyer") {
       const { purchased } = await User.findById(authorId).populate("purchased");
-      console.log(purchased);
       if (!purchased)
         return res
           .status(404)

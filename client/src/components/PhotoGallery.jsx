@@ -20,7 +20,6 @@ const PhotoGallery = () => {
 
     const res = await axios.get(import.meta.env.VITE_API_URL + "/post/getAll");
     const { data } = await res.data;
-    console.log(data);
     dispatch(setAllPosts(data));
   };
 
