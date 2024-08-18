@@ -21,8 +21,8 @@ const About = () => {
             how much you wanna sell your clicked pics. You will get all stats
             like how much you earned spend and all details Try and know more...
           </p>
-          <div className="w-full flex flex-col sm:flex-row gap-4">
-            <div className="sm:w-1/2">
+          <div className="w-full flex flex-col lg:flex-row gap-4">
+            <div className="xl:w-1/2 flex flex-col sm:flex-row gap-3 xl:flex-col">
               <p className="mt-2 text-sm">
                 <span className="text-gray-700 text-xl font-semibold">
                   As a Seller:
@@ -47,7 +47,7 @@ const About = () => {
             </div>
             <div className="w-1/2">
               <img
-                className="w-full object-cover hidden md:block rounded-xl"
+                className="w-full object-cover hidden xl:block rounded-xl"
                 src="/image2.webp"
                 alt=""
               />
