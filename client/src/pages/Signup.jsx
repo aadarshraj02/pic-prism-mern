@@ -13,6 +13,35 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
+    if (username === "") {
+      toast.error("Username is required");
+      return;
+    } else if (username !== username.toLowerCase()) {
+      toast.error("Username must be in lowercase");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+      toast.error("Email is required");
+      return;
+    } else if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (password === "") {
+      toast.error("Password is required");
+      return;
+    } else if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must be at least 8 characters long and contain both letters and numbers"
+      );
+      return;
+    }
+
     try {
       const res = await axios.post(import.meta.env.VITE_API_URL + "/signup", {
         username,
@@ -25,7 +54,7 @@ const Signup = () => {
         setUsername("");
         setEmail("");
         setPassword("");
-        setAccountType("");
+        setAccountType("buyer");
         toast.success(data.message);
         navigate("/login");
       }
@@ -54,6 +83,7 @@ const Signup = () => {
               id="name"
               placeholder="Enter your Username"
               value={username}
+              required
               onChange={(e) => setUsername(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
@@ -71,6 +101,7 @@ const Signup = () => {
               id="email"
               placeholder="your@email.com"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
@@ -88,6 +119,7 @@ const Signup = () => {
               id="password"
               placeholder="Enter any Password"
               value={password}
+              required
               onChange={(e) => setPassword(e.target.value)}
               className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:ring-black focus:border-black"
             />
