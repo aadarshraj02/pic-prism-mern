@@ -6,9 +6,6 @@ const {
   getMyPosts,
   deletePost,
   searchPost,
-  addToFavorites,
-  removeFromFavorites,
-  getFavorites,
   getPostsByDateRange,
 } = require("../controllers/postController");
 
@@ -17,13 +14,6 @@ router.get("/post/getAll", getAllPosts);
 router.get("/post/myPosts", verifyToken, getMyPosts);
 router.delete("/post/delete/:id", verifyToken, deletePost);
 router.get("/post/search", searchPost);
-router.put("/post/addToFavorites/:postId", verifyToken, addToFavorites);
-router.put(
-  "/post/removeFromFavorites/:postId",
-  verifyToken,
-  removeFromFavorites
-);
-router.get("/post/favorites", verifyToken, getFavorites);
 router.get("/post/getPostsByDateRange", verifyToken, getPostsByDateRange);
 
 module.exports = router;

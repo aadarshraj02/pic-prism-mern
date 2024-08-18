@@ -79,14 +79,6 @@ const DashboardSidebar = () => {
           >
             <FaList /> Orders
           </li>
-          <li
-            className={`flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer ${
-              tab === "favorites" && "bg-black text-white"
-            }`}
-            onClick={() => dispatch(setTab("favorites"))}
-          >
-            <IoIosHeart /> Favorites
-          </li>
           <Link
             to="/"
             className="flex items-center justify-start gap-2 w-full rounded-lg px-2 hover:bg-black hover:text-white transition-all ease-linear duration-300 hover:scale-105 cursor-pointer"

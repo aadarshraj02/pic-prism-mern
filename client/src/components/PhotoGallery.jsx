@@ -34,9 +34,7 @@ const PhotoGallery = () => {
     try {
       const res = await axios.post(
         import.meta.env.VITE_API_URL + "/payment/generate",
-        {
-          price,
-        },
+        { price },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -100,23 +98,6 @@ const PhotoGallery = () => {
     razorpayWindow.open();
   };
 
-  const addToFavorites = async (postId) => {
-    try {
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/post/addToFavorites/${postId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      );
-      toast.success("Added to Favorites");
-    } catch (error) {
-      toast.error("Failed to add to Favorites", error);
-    }
-  };
-
   useEffect(() => {
     getAllImages();
   }, []);
@@ -141,11 +122,7 @@ const PhotoGallery = () => {
               />
             }
             icon2={
-              <IoIosHeart
-                title="Add to Favorites"
-                onClick={() => addToFavorites(_id)}
-                className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300"
-              />
+              <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
             }
           />
         ))}
