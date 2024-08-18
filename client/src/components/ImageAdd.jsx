@@ -90,6 +90,7 @@ const ImageAdd = () => {
             type="file"
             name="image"
             id="image"
+            required
             className="rounded-lg border outline-none px-3 py-1 mt-1"
           />
         </div>
@@ -111,7 +112,7 @@ const ImageAdd = () => {
             Price
           </label>
           <input
-            type="number"
+            type="text"
             name="price"
             id="price"
             placeholder="For e.g. $5.99 "
